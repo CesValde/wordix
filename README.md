@@ -12,3 +12,4 @@ Cristian Torres
 
 # Integrantes 
 - **Cesar Valderrama** 
+- **Lucia Agustina Humacata** 
