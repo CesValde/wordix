@@ -14,3 +14,4 @@ Cristian Torres
 - **Cesar Valderrama** 
 - **Lucia Agustina Humacata** 
 - **Serena Aguilera**
+- **Barrera Francisco Agustin**
