@@ -26,8 +26,12 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
-/**
- *  ****COMPLETAR*****
+// COMPLETADO
+/** 
+ * Verifica si el caracter ingresado es un numero entero y que este dentro del rango definido
+ * @param int $min
+ * @param int $max
+ * @return int
  */
 function solicitarNumeroEntre($min, $max)             // esto para cartel de verificacion ej: Debe ingresar un numero entre x rango
 {
@@ -111,8 +115,10 @@ function escribirSegunEstado($texto, $estado)
     }
 }
 
+//COMPLETADO
 /**
- * ****COMPLETAR*****
+ * Imprime un mensaje de bienvenida con el nombre del usuario
+ * @param string $usuario
  */
 function escribirMensajeBienvenida($usuario)
 {
@@ -123,9 +129,11 @@ function escribirMensajeBienvenida($usuario)
     echo "***************************************************\n";
 }
 
-
+//COMPLETADO
 /**
- * ****COMPLETAR*****
+ * Verifica que los caracteres ingresados sean letras y si lo son retorna true 
+ * @param string $cadena
+ * @return boolean $esLetra
  */
 function esPalabra($cadena)
 {
@@ -134,14 +142,15 @@ function esPalabra($cadena)
     $esLetra = true;
     $i = 0;
     while ($esLetra && $i < $cantCaracteres) {
-        $esLetra =  ctype_alpha($cadena[$i]);
+        $esLetra = ctype_alpha($cadena[$i]);
         $i++;
     }
     return $esLetra;
 }
 
 /**
- *  ****COMPLETAR*****
+ * Verifica si la palabra es de 5 letras, sino le imprime que ingrese una palabra de 5 letras
+ * @return string 
  */
 function leerPalabra5Letras()
 {
