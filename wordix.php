@@ -29,7 +29,7 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**
  *  ****COMPLETAR*****
  */
-function solicitarNumeroEntre($min, $max)
+function solicitarNumeroEntre($min, $max)             // esto para cartel de verificacion ej: Debe ingresar un numero entre x rango
 {
     //int $numero
     $numero = trim(fgets(STDIN));
