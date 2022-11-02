@@ -148,6 +148,7 @@ function esPalabra($cadena)
     return $esLetra;
 }
 
+//COMPLETADO
 /**
  * Verifica si la palabra es de 5 letras, sino le imprime que ingrese una palabra de 5 letras
  * @return string 
