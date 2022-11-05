@@ -39,8 +39,29 @@ function cargarColeccionPalabras()
         // array $coleccionPartidas
         // usar funcion array_push 
         $coleccionPartidas = [];
-        $partida1 = ; //FALTA COMPLETAR ESTE MODULO AUN
+        $partida1 =  ; //FALTA COMPLETAR ESTE MODULO AUN 
      }
+
+/** FUNCION nro 3
+ * Despliega el menu de opciones y retorna la opcion elegida por el usuario
+ * @return int
+ */
+        function seleccionarOpcion(){
+        // int $opcion, $minimo, $maximo
+            $minimo = 1;
+            $maximo = 8;
+            echo "*** MENU DE OPCIONES *** 
+            1) Jugar al Wordix con una palabra elegida 
+            2) Jugar al Wordix con una palabra aleatoria 
+            3) Mostrar una partida 
+            4) Mostrar la primer partida ganadora 
+            5) Mostrar resumen de Jugador 
+            6) Mostrar listado de partidas ordenadas por jugador y por palabra 
+            7) Agregar una palabra de 5 letras a Wordix 
+            8) Salir \n";
+            $opcion = solicitarNumeroEntre($minimo,$maximo);
+            return $opcion;
+        }
 
 
 /**
@@ -63,6 +84,25 @@ function cargarColeccionPalabras()
 
         echo "******************************";
         }
+
+/** FUNCION nro 7
+ * Agrega una palabra a la lista de palabras para jugar Wordix y retorna el array modificado
+ * @param array $coleccionPalabras
+ * @param string $palabraNueva
+ * @return array
+ */
+$coleccionPalabrasX = cargarColeccionPalabras(); //contiene lista original
+$palabraNueva = leerPalabra5Letras();
+function agregarPalabra($coleccionPalabrasX,$palabraNueva){
+    array_push($coleccionPalabrasX,$palabraNueva);
+    return $coleccionPalabrasX;
+    }
+$coleccionPalabrasX = agregarPalabra($coleccionPalabrasX,$palabraNueva)
+// sobreescribe la lista original con la nueva lista actualizada
+// esta variable va a usarse para elegir jugar una palabra (menu opcion 1 y 2)
+// con la lista actualizada, no la original
+
+
 /* ... COMPLETAR ... */
 
 
