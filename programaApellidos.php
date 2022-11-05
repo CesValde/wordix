@@ -15,7 +15,7 @@ include_once("wordix.php");
 /**************************************/
 
 /**
- * Obtiene una colección de palabras
+ * Obtiene una colección de partidas 
  * @return array
  */
 function cargarColeccionPalabras()
@@ -31,6 +31,38 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 
+/**
+ * Array de coleccion de palabras  // FUNCION N 2 (aun falta completar)
+ *@return array
+ */
+    function cargarPartidas(){
+        // array $coleccionPartidas
+        // usar funcion array_push 
+        $coleccionPartidas = [];
+        $partida1 = ; //FALTA COMPLETAR ESTE MODULO AUN
+     }
+
+
+/**
+ * Dado un numero de partida muestra en la pantalla los datos de la partida 
+ *@param int $nroPartida
+ */
+        function datosDePartida($nroPartida){    //funcion nro 6 
+            // array $coleccionPartidas
+                
+        echo "******************************";
+        echo "Partida WORDIX" .$nroPartida . ": palabra " . $coleccionPartidas[$nroPartida - 1]["palabraWordix"]; 
+        echo "Jugador :" . $coleccionPartidas[$nroPartida - 1]["usuario"];
+        echo "Puntaje: " . $coleccionPartidas[$nroPartida - 1]["puntaje"]. "puntos";
+
+            if($coleccionPartidas[$nroPartida - 1]["puntaje"] != 0){
+                echo "Intento: adivino la palara en " . $coleccionPartidas[$nroPartida - 1]["intentos"]. "intentos";
+            }else{
+                echo "Intento: no adivino la palabra";
+            }
+
+        echo "******************************";
+        }
 /* ... COMPLETAR ... */
 
 
