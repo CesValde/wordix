@@ -84,6 +84,46 @@ function cargarColeccionPalabras()
             return $opcion;
         }
 
+
+
+        
+//FUNCION 4
+/**
+ * Verifica que los caracteres ingresados sean letras y si lo son retorna true 
+ * @param string $cadena
+ * @return boolean $esLetra
+ */
+function esPalabra($cadena)
+{
+    //int $cantCaracteres, $i, boolean $esLetra
+    $cantCaracteres = strlen($cadena);
+    $esLetra = true;
+    $i = 0;
+    while ($esLetra && $i < $cantCaracteres) {
+        $esLetra = ctype_alpha($cadena[$i]);
+        $i++;
+    }
+    return $esLetra;
+}
+/**
+ * Verifica si la palabra ingresada es de 5 letras, y la retorna,
+ * caso contrario, imprime que ingrese una palabra de 5 letras
+ * @return string 
+ */
+function leerPalabra5Letras(){
+    //string $palabra
+    echo "Ingrese una palabra de 5 letras: \n";
+    $palabra = trim(fgets(STDIN));
+    $palabra  = strtoupper($palabra);                       //cambia a mayusculas
+
+    while ((strlen($palabra) != 5) || !esPalabra($palabra)) {
+        echo "Debe ingresar una palabra de 5 letras: \n";
+        $palabra = strtoupper(trim(fgets(STDIN)));          //cambia a mayusculas
+    }
+    return $palabra;
+}
+
+
 //FUNCION 6 
 /**
  * Dado un numero de partida muestra en la pantalla los datos de la partida 
@@ -106,6 +146,7 @@ function cargarColeccionPalabras()
 
     echo "********************************************\n";
 }
+
 
 //FUNCION 7        
 /** FUNCION nro 7
