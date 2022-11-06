@@ -89,23 +89,23 @@ function cargarColeccionPalabras()
  * Dado un numero de partida muestra en la pantalla los datos de la partida 
  *@param int $nroPartida
  */
-        function datosDePartida($nroPartida){    
-            // array $coleccionPartidasX
+    function datosDePartida($nroPartida){    
+     // array $coleccionPartidasX
         $coleccionPartidasX = cargarPartidas();
-                
-        echo "********************************************\n";
-        echo "Partida WORDIX " .$nroPartida . ": palabra: " . $coleccionPartidasX[$nroPartida - 1]["palabraWordix"]. "\n"; 
-        echo "Jugador: " . $coleccionPartidasX[$nroPartida - 1]["usuario"]. "\n";
-        echo "Puntaje: " . $coleccionPartidasX[$nroPartida - 1]["puntaje"]. " puntos\n";
+        
+    echo "********************************************\n";
+    echo "Partida WORDIX " .$nroPartida . ": palabra " . $coleccionPartidasX[$nroPartida - 1]["palabraWordix"]. "\n"; 
+    echo "Jugador: " . $coleccionPartidasX[$nroPartida - 1]["usuario"]. "\n";
+    echo "Puntaje: " . $coleccionPartidasX[$nroPartida - 1]["puntaje"]. " puntos\n";
 
-            if($coleccionPartidasX[$nroPartida - 1]["puntaje"] != 0){
-                echo "Intento: adivino la palabra en " . $coleccionPartidasX[$nroPartida - 1]["intento"]. "intentos\n";
-            }else{
-                echo "Intento: no adivino la palabra\n";
-            }
-
-        echo "********************************************\n";
+        if($coleccionPartidasX[$nroPartida - 1]["puntaje"] != 0){
+        echo "Intento: adivinó la palabra en " . $coleccionPartidasX[$nroPartida - 1]["intento"]. " intentos\n";
+        }else{
+        echo "Intento: no adivinó la palabra\n";
         }
+
+    echo "********************************************\n";
+}
 
 //FUNCION 7        
 /** FUNCION nro 7
