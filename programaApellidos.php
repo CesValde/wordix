@@ -14,8 +14,9 @@ include_once("wordix.php");
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
+//FUNCION 1
 /**
- * Obtiene una colección de partidas 
+ * Array de coleccion de palabras 
  * @return array
  */
 function cargarColeccionPalabras()
@@ -30,18 +31,38 @@ function cargarColeccionPalabras()
 
     return ($coleccionPalabras);
 }
-
+//FUNCION 2
 /**
- * Array de coleccion de palabras  // FUNCION N 2 (aun falta completar)
+ * Array de coleccion de partidas  // FUNCION N 2 (completa (funciona) pero falta ver como agregar array_push para mejorar)
  *@return array
  */
     function cargarPartidas(){
         // array $coleccionPartidas
         // usar funcion array_push 
-        $coleccionPartidas = [];
-        $partida1 =  ; //FALTA COMPLETAR ESTE MODULO AUN 
-     }
+    $coleccionPartidas = [];
+    $partida1 = ["palabraWordix" => "BICHO", "usuario" => "CESAR", "puntaje" => 14, "intento" => 3];
+    $partida2 = ["palabraWordix" => "GATOS", "usuario" => "LUCIA", "puntaje" => 17, "intento" => 2];
+    $partida3 = ["palabraWordix" => "MUJER", "usuario" => "DAVID", "puntaje" => 17, "intento" => 1];
+    $partida4 = ["palabraWordix" => "QUESO", "usuario" => "MAJO", "puntaje" => 15, "intento" => 4];
+    $partida5 = ["palabraWordix" => "TINTO", "usuario" => "SERENA", "puntaje" => 15, "intento" => 5];
+    $partida6 = ["palabraWordix" => "VERDE", "usuario" => "CESAR", "puntaje" => 17, "intento" => 2];
+    $partida7 = ["palabraWordix" => "HUEVO", "usuario" => "FRANCISCO", "puntaje" => 15, "intento" => 3];
+    $partida8 = ["palabraWordix" => "NAVES", "usuario" => "CLAUDIA", "puntaje" => 18, "intento" => 2];
+    $partida9 = ["palabraWordix" => "KANJI", "usuario" => "MAJO", "puntaje" => 0, "intento" => 6];
+    $partida10 = ["palabraWordix" => "PIANO", "usuario" => "CRISTIAN", "puntaje" => 15, "intento" => 4];
+    $partida11 = ["palabraWordix" => "VERDE", "usuario" => "KARINA", "puntaje" => 16, "intento" => 3];
+    $partida12 = ["palabraWordix" => "MELON", "usuario" => "LUCIA", "puntaje" => 14, "intento" => 4];
+    $partida13 = ["palabraWordix" => "BICHO", "usuario" => "LUCIA", "puntaje" => 15, "intento" => 2];
+    $partida14 = ["palabraWordix" => "ILUSO", "usuario" => "SERENA", "puntaje" => 16, "intento" => 2];
+    $partida15 = ["palabraWordix" => "KANJI", "usuario" => "CESAR", "puntaje" => 17, "intento" => 1];
+    $partida16 = ["palabraWordix" => "AREPA", "usuario" => "CESAR", "puntaje" => 14, "intento" => 5];
+  
+    $coleccionPartidas = [$partida1, $partida2, $partida3, $partida4, $partida5, $partida6, $partida7, $partida8, $partida9, $partida10, $partida11, $partida12, $partida13, $partida14, $partida15, $partida16];
 
+    return $coleccionPartidas;
+ }
+
+ //FUNCION 3
 /** FUNCION nro 3
  * Despliega el menu de opciones y retorna la opcion elegida por el usuario
  * @return int
@@ -63,28 +84,30 @@ function cargarColeccionPalabras()
             return $opcion;
         }
 
-
+//FUNCION 6 
 /**
  * Dado un numero de partida muestra en la pantalla los datos de la partida 
  *@param int $nroPartida
  */
-        function datosDePartida($nroPartida){    //funcion nro 6 
-            // array $coleccionPartidas
+        function datosDePartida($nroPartida){    
+            // array $coleccionPartidasX
+        $coleccionPartidasX = cargarPartidas();
                 
-        echo "******************************";
-        echo "Partida WORDIX" .$nroPartida . ": palabra " . $coleccionPartidas[$nroPartida - 1]["palabraWordix"]; 
-        echo "Jugador :" . $coleccionPartidas[$nroPartida - 1]["usuario"];
-        echo "Puntaje: " . $coleccionPartidas[$nroPartida - 1]["puntaje"]. "puntos";
+        echo "********************************************\n";
+        echo "Partida WORDIX " .$nroPartida . ": palabra: " . $coleccionPartidasX[$nroPartida - 1]["palabraWordix"]. "\n"; 
+        echo "Jugador: " . $coleccionPartidasX[$nroPartida - 1]["usuario"]. "\n";
+        echo "Puntaje: " . $coleccionPartidasX[$nroPartida - 1]["puntaje"]. " puntos\n";
 
-            if($coleccionPartidas[$nroPartida - 1]["puntaje"] != 0){
-                echo "Intento: adivino la palara en " . $coleccionPartidas[$nroPartida - 1]["intentos"]. "intentos";
+            if($coleccionPartidasX[$nroPartida - 1]["puntaje"] != 0){
+                echo "Intento: adivino la palabra en " . $coleccionPartidasX[$nroPartida - 1]["intento"]. "intentos\n";
             }else{
-                echo "Intento: no adivino la palabra";
+                echo "Intento: no adivino la palabra\n";
             }
 
-        echo "******************************";
+        echo "********************************************\n";
         }
 
+//FUNCION 7        
 /** FUNCION nro 7
  * Agrega una palabra a la lista de palabras para jugar Wordix y retorna el array modificado
  * @param array $coleccionPalabras
