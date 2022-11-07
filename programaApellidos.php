@@ -44,7 +44,7 @@ include_once("wordix.php");
         $coleccionPartidas [5] = ["palabraWordix" => "VERDE", "usuario" => "CESAR", "puntaje" => 17, "intento" => 2] ;
         $coleccionPartidas [6] = ["palabraWordix" => "HUEVO", "usuario" => "FRANCISCO", "puntaje" => 15, "intento" => 3] ;
         $coleccionPartidas [7] = ["palabraWordix" => "NAVES", "usuario" => "CLAUDIA", "puntaje" => 18, "intento" => 2] ;
-        $coleccionPartidas [8] = ["palabraWordix" => "KANJI", "usuario" => "MAJO", "puntaje" => 0, "intento" => 6] ;
+        $coleccionPartidas [8] = ["palabraWordix" => "KANJI", "usuario" => "majo", "puntaje" => 0, "intento" => 6] ;
         $coleccionPartidas [9] = ["palabraWordix" => "PIANO", "usuario" => "CRISTIAN", "puntaje" => 15, "intento" => 4] ;
         $coleccionPartidas [10] = ["palabraWordix" => "VERDE", "usuario" => "KARINA", "puntaje" => 16, "intento" => 3] ;
         $coleccionPartidas [11] = ["palabraWordix" => "MELON", "usuario" => "LUCIA", "puntaje" => 14, "intento" => 4] ;
@@ -52,7 +52,7 @@ include_once("wordix.php");
         $coleccionPartidas [13] = ["palabraWordix" => "ILUSO", "usuario" => "SERENA", "puntaje" => 16, "intento" => 2] ;
         $coleccionPartidas [14] = ["palabraWordix" => "KANJI", "usuario" => "CESAR", "puntaje" => 17, "intento" => 1] ;
         $coleccionPartidas [15] = ["palabraWordix" => "AREPA", "usuario" => "CESAR", "puntaje" => 14, "intento" => 5] ;
-
+        $coleccionPartidas [16] = ["palabraWordix" => "AREPA", "usuario" => "marta", "puntaje" => 0, "intento" => 6] ;
         // array_push($coleccionPartidas) ;
 
             return $coleccionPartidas;
@@ -140,15 +140,24 @@ include_once("wordix.php");
 
         while($i < count($coleccionPartidas) && $indice == -1) {
             if($coleccionPartidas[$i]["usuario"] == $usuario) {
-                if($coleccionPartidas = [$i]["puntaje"] > 0) {
-                    $indice = $coleccionPartidas[$i] ;
+                if($coleccionPartidas [$i]["puntaje"] > 0) {
+                    $indice = $i ;
+                }elseif($coleccionPartidas [$i]["puntaje"] == 0){
+                    $indice = -1 ;
+                    $i = count($coleccionPartidas) ;
                 }
+            }
+            if($coleccionPartidas[$i]["usuario"] != $usuario){
+                $indice = -3 ;
+            }
+            $i++ ;
             }     
-            $i++ ; 
-        }
+        
+        
         return $indice ; 
+
     }
-   
+
     // MODULO 9 
     /** 
     * @param array $coleccionPartidas
@@ -236,7 +245,7 @@ include_once("wordix.php");
     }
     
 
-    // NODULO 10 
+    // MODULO 10 
     /**
      * Solicita al usuario su nombre y lo retorna en minusculas
      * @return string $nombreJugador
@@ -255,6 +264,22 @@ include_once("wordix.php");
             return $nombreJugador;
     }
 
+// MODULO 11
+/** 
+*/
+function cmp($a,$b){
+    if(strcmp($a["usuario"], $b["usuario"])==0){
+        $orden = strcmp($a["palabraWordix"],$b["palabraWordix"]);
+    }else{
+        $orden = strcmp($a["usuario"],$b["usuario"]);
+    }
+return $orden; 
+}
+function orden(){
+$coleccion = cargarPartidas();
+uasort($coleccion,'cmp');
+print_r($coleccion);
+}
 
 /* ... COMPLETAR ... */
 
@@ -314,8 +339,17 @@ do {
             break ; 
             
         case 4:
-
-
+            $usuario = solicitarJugador() ;
+            $indicePartida = primeraPartidaGanda($coleccionPartidas, $usuario) ;
+            if($indicePartida==-3){
+                echo "No existe el jugador. \n" ;
+            }elseif($indicePartida==-1){
+                echo "el jugador " . $usuario . " no gano ninguna partida. \n" ;
+            }else{
+            $indicePartida = $indicePartida + 1 ;
+            datosDePartida($indicePartida) ;
+            }
+        
             break; 
         case 5:           // LISTO funciona perfecto
             $usuario = solicitarJugador() ; 
