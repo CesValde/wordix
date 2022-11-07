@@ -37,8 +37,8 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
         echo "Ingrese un numero: " ; 
         $numero = trim(fgets(STDIN)) ;
         $numero = (int)$numero ;  
-
-        while (($numero == false) || !($numero >= $min && $numero <= $max)) {       
+       
+        while (!is_int($numero + 0) || !($numero >= $min && $numero <= $max)) {       
         echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
         $numero = trim(fgets(STDIN)) ;
         }

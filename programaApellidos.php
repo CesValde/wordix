@@ -58,6 +58,9 @@ include_once("wordix.php");
             return $coleccionPartidas;
     }
 
+
+
+    // FUNCION EXTRA
     function actualizarColecPartidas($coleccionPartidas,$partida){
         array_push($coleccionPartidas,$partida);
              return $coleccionPartidas;
@@ -137,26 +140,28 @@ include_once("wordix.php");
 
         $indice = -1 ;
         $i = 0 ; 
+        $existe = false ; 
 
-        while($i < count($coleccionPartidas) && $indice == -1) {
-            if($coleccionPartidas[$i]["usuario"] == $usuario) {
-                if($coleccionPartidas [$i]["puntaje"] > 0) {
-                    $indice = $i ;
-                }elseif($coleccionPartidas [$i]["puntaje"] == 0){
-                    $indice = -1 ;
-                    $i = count($coleccionPartidas) ;
+            while($i < count($coleccionPartidas) && $indice == -1) {
+                if($coleccionPartidas[$i]["usuario"] == $usuario) {
+                    if($coleccionPartidas [$i]["puntaje"] > 0) {
+                        $indice = $i ;
+                        $existe = true ; 
+                    }elseif($coleccionPartidas [$i]["puntaje"] == 0){
+                        $indice = -1 ;
+                        $existe = true ; 
+                        $i = count($coleccionPartidas) ;
+                    }
                 }
+                $i++ ;
             }
-            if($coleccionPartidas[$i]["usuario"] != $usuario){
-                $indice = -3 ;
+            if($existe == false) {
+                $indice = -3 ; 
             }
-            $i++ ;
-            }     
-        
-        
         return $indice ; 
-
-    }
+    }     
+        
+        
 
     // MODULO 9 
     /** 
@@ -255,7 +260,7 @@ include_once("wordix.php");
     
             echo "Ingrese su nombre: " ;
             $nombreJugador = trim(fgets(STDIN));
-            $nombreJugador = strtolower($nombreJugador);
+            $nombreJugador = strtolower($nombreJugador);        // usamos la de mayus 
 
             while($nombreJugador[0] <> ctype_alpha($nombreJugador[0])) {
                 echo "Ingrese un nombre valido: " ; 
@@ -264,22 +269,25 @@ include_once("wordix.php");
             return $nombreJugador;
     }
 
-// MODULO 11
-/** 
-*/
-function cmp($a,$b){
-    if(strcmp($a["usuario"], $b["usuario"])==0){
-        $orden = strcmp($a["palabraWordix"],$b["palabraWordix"]);
-    }else{
-        $orden = strcmp($a["usuario"],$b["usuario"]);
+    // MODULO 11
+    /** 
+     * 
+     */
+    function cmp($a,$b){
+        if(strcmp($a["usuario"], $b["usuario"]) == 0){
+            $orden = strcmp($a["palabraWordix"], $b["palabraWordix"]);
+        } else {
+            $orden = strcmp($a["usuario"], $b["usuario"]);
+        }
+    return $orden; 
     }
-return $orden; 
-}
-function orden(){
-$coleccion = cargarPartidas();
-uasort($coleccion,'cmp');
-print_r($coleccion);
-}
+
+    // ESTO ?
+    function orden(){
+    $coleccion = cargarPartidas();
+    uasort($coleccion,'cmp');
+    print_r($coleccion);
+    }
 
 /* ... COMPLETAR ... */
 
@@ -335,21 +343,19 @@ do {
             echo "\n" . "\n" ; 
             datosDePartida($numeroPartida) ; 
             echo "\n" . "\n" ; 
-            
             break ; 
             
-        case 4:
+        case 4:         // Funciona perfecto 
             $usuario = solicitarJugador() ;
             $indicePartida = primeraPartidaGanda($coleccionPartidas, $usuario) ;
-            if($indicePartida==-3){
-                echo "No existe el jugador. \n" ;
-            }elseif($indicePartida==-1){
-                echo "el jugador " . $usuario . " no gano ninguna partida. \n" ;
-            }else{
-            $indicePartida = $indicePartida + 1 ;
-            datosDePartida($indicePartida) ;
-            }
-        
+                if($indicePartida == -3){
+                    echo "No existe el jugador. \n" ;
+                } elseif($indicePartida == -1){
+                    echo "el jugador " . $usuario . " no gano ninguna partida. \n" ;
+                } else {
+                $indicePartida = $indicePartida + 1 ;
+                datosDePartida($indicePartida) ;
+                }
             break; 
         case 5:           // LISTO funciona perfecto
             $usuario = solicitarJugador() ; 
