@@ -34,29 +34,35 @@ include_once("wordix.php");
     function cargarPartidas(){
         // array $coleccionPartidas
         // usar funcion array_push 
+        $coleccionPartidas = [];
 
-            $coleccionPartidas = [];
-            $partida1 = ["palabraWordix" => "BICHO", "usuario" => "cesar", "puntaje" => 14, "intento" => 3];
-            $partida2 = ["palabraWordix" => "GATOS", "usuario" => "LUCIA", "puntaje" => 17, "intento" => 2];
-            $partida3 = ["palabraWordix" => "MUJER", "usuario" => "DAVID", "puntaje" => 17, "intento" => 1];
-            $partida4 = ["palabraWordix" => "QUESO", "usuario" => "MAJO", "puntaje" => 15, "intento" => 4];
-            $partida5 = ["palabraWordix" => "TINTO", "usuario" => "SERENA", "puntaje" => 15, "intento" => 5];
-            $partida6 = ["palabraWordix" => "VERDE", "usuario" => "CESAR", "puntaje" => 17, "intento" => 2];
-            $partida7 = ["palabraWordix" => "HUEVO", "usuario" => "FRANCISCO", "puntaje" => 15, "intento" => 3];
-            $partida8 = ["palabraWordix" => "NAVES", "usuario" => "CLAUDIA", "puntaje" => 18, "intento" => 2];
-            $partida9 = ["palabraWordix" => "KANJI", "usuario" => "MAJO", "puntaje" => 0, "intento" => 6];
-            $partida10 = ["palabraWordix" => "PIANO", "usuario" => "CRISTIAN", "puntaje" => 15, "intento" => 4];
-            $partida11 = ["palabraWordix" => "VERDE", "usuario" => "KARINA", "puntaje" => 16, "intento" => 3];
-            $partida12 = ["palabraWordix" => "MELON", "usuario" => "LUCIA", "puntaje" => 14, "intento" => 4];
-            $partida13 = ["palabraWordix" => "BICHO", "usuario" => "LUCIA", "puntaje" => 15, "intento" => 2];
-            $partida14 = ["palabraWordix" => "ILUSO", "usuario" => "SERENA", "puntaje" => 16, "intento" => 2];
-            $partida15 = ["palabraWordix" => "KANJI", "usuario" => "CESAR", "puntaje" => 17, "intento" => 1];
-            $partida16 = ["palabraWordix" => "AREPA", "usuario" => "CESAR", "puntaje" => 14, "intento" => 5];
-        
-            $coleccionPartidas = [$partida1, $partida2, $partida3, $partida4, $partida5, $partida6, $partida7, $partida8, $partida9, $partida10, $partida11, $partida12, $partida13, $partida14, $partida15, $partida16];
+        $coleccionPartidas [0] = ["palabraWordix" => "BICHO", "usuario" => "cesar", "puntaje" => 14, "intento" => 3];
+        $coleccionPartidas [1] = ["palabraWordix" => "GATOS", "usuario" => "LUCIA", "puntaje" => 17, "intento" => 2];
+        $coleccionPartidas [2] = ["palabraWordix" => "MUJER", "usuario" => "DAVID", "puntaje" => 17, "intento" => 1];
+        $coleccionPartidas [3] = ["palabraWordix" => "QUESO", "usuario" => "MAJO", "puntaje" => 15, "intento" => 4];
+        $coleccionPartidas [4] = ["palabraWordix" => "TINTO", "usuario" => "SERENA", "puntaje" => 15, "intento" => 5];
+        $coleccionPartidas [5] = ["palabraWordix" => "VERDE", "usuario" => "CESAR", "puntaje" => 17, "intento" => 2];
+        $coleccionPartidas [6] = ["palabraWordix" => "HUEVO", "usuario" => "FRANCISCO", "puntaje" => 15, "intento" => 3];
+        $coleccionPartidas [7] = ["palabraWordix" => "NAVES", "usuario" => "CLAUDIA", "puntaje" => 18, "intento" => 2];
+        $coleccionPartidas [8] = ["palabraWordix" => "KANJI", "usuario" => "MAJO", "puntaje" => 0, "intento" => 6];
+        $coleccionPartidas [9] = ["palabraWordix" => "PIANO", "usuario" => "CRISTIAN", "puntaje" => 15, "intento" => 4];
+        $coleccionPartidas [10] = ["palabraWordix" => "VERDE", "usuario" => "KARINA", "puntaje" => 16, "intento" => 3];
+        $coleccionPartidas [11] = ["palabraWordix" => "MELON", "usuario" => "LUCIA", "puntaje" => 14, "intento" => 4];
+        $coleccionPartidas [12] = ["palabraWordix" => "BICHO", "usuario" => "LUCIA", "puntaje" => 15, "intento" => 2];
+        $coleccionPartidas [13] = ["palabraWordix" => "ILUSO", "usuario" => "SERENA", "puntaje" => 16, "intento" => 2];
+        $coleccionPartidas [14] = ["palabraWordix" => "KANJI", "usuario" => "CESAR", "puntaje" => 17, "intento" => 1];
+        $coleccionPartidas [15] = ["palabraWordix" => "AREPA", "usuario" => "CESAR", "puntaje" => 14, "intento" => 5];
+
+        // array_push($coleccionPartidas) ;
 
             return $coleccionPartidas;
     }
+
+    function actualizarColecPartidas($coleccionPartidas,$partida){
+        array_push($coleccionPartidas,$partida);
+             return $coleccionPartidas;
+    }
+    
       
 
     //FUNCION 3
@@ -273,6 +279,7 @@ do {
             $palabraWordix = trim(fgets(STDIN)) ;
             // llamdo funcion 10
             //$partida = jugarWordix() ; // completar
+            // $coleccionPartidas = actualizarColecPartidas($coleccionPartidas,$partida)
 
             break;
         case 2: 
