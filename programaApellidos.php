@@ -36,22 +36,22 @@ include_once("wordix.php");
         // usar funcion array_push 
         $coleccionPartidas = [];
 
-        $coleccionPartidas [0] = ["palabraWordix" => "BICHO", "usuario" => "cesar", "puntaje" => 14, "intento" => 3];
-        $coleccionPartidas [1] = ["palabraWordix" => "GATOS", "usuario" => "LUCIA", "puntaje" => 17, "intento" => 2];
-        $coleccionPartidas [2] = ["palabraWordix" => "MUJER", "usuario" => "DAVID", "puntaje" => 17, "intento" => 1];
-        $coleccionPartidas [3] = ["palabraWordix" => "QUESO", "usuario" => "MAJO", "puntaje" => 15, "intento" => 4];
-        $coleccionPartidas [4] = ["palabraWordix" => "TINTO", "usuario" => "SERENA", "puntaje" => 15, "intento" => 5];
-        $coleccionPartidas [5] = ["palabraWordix" => "VERDE", "usuario" => "CESAR", "puntaje" => 17, "intento" => 2];
-        $coleccionPartidas [6] = ["palabraWordix" => "HUEVO", "usuario" => "FRANCISCO", "puntaje" => 15, "intento" => 3];
-        $coleccionPartidas [7] = ["palabraWordix" => "NAVES", "usuario" => "CLAUDIA", "puntaje" => 18, "intento" => 2];
-        $coleccionPartidas [8] = ["palabraWordix" => "KANJI", "usuario" => "MAJO", "puntaje" => 0, "intento" => 6];
-        $coleccionPartidas [9] = ["palabraWordix" => "PIANO", "usuario" => "CRISTIAN", "puntaje" => 15, "intento" => 4];
-        $coleccionPartidas [10] = ["palabraWordix" => "VERDE", "usuario" => "KARINA", "puntaje" => 16, "intento" => 3];
-        $coleccionPartidas [11] = ["palabraWordix" => "MELON", "usuario" => "LUCIA", "puntaje" => 14, "intento" => 4];
-        $coleccionPartidas [12] = ["palabraWordix" => "BICHO", "usuario" => "LUCIA", "puntaje" => 15, "intento" => 2];
-        $coleccionPartidas [13] = ["palabraWordix" => "ILUSO", "usuario" => "SERENA", "puntaje" => 16, "intento" => 2];
-        $coleccionPartidas [14] = ["palabraWordix" => "KANJI", "usuario" => "CESAR", "puntaje" => 17, "intento" => 1];
-        $coleccionPartidas [15] = ["palabraWordix" => "AREPA", "usuario" => "CESAR", "puntaje" => 14, "intento" => 5];
+        $coleccionPartidas [0] = ["palabraWordix" => "BICHO", "usuario" => "cr7", "puntaje" => 14, "intento" => 3] ;
+        $coleccionPartidas [1] = ["palabraWordix" => "GATOS", "usuario" => "LUCIA", "puntaje" => 17, "intento" => 2] ;
+        $coleccionPartidas [2] = ["palabraWordix" => "MUJER", "usuario" => "DAVID", "puntaje" => 17, "intento" => 1] ;
+        $coleccionPartidas [3] = ["palabraWordix" => "QUESO", "usuario" => "MAJO", "puntaje" => 15, "intento" => 4] ;
+        $coleccionPartidas [4] = ["palabraWordix" => "TINTO", "usuario" => "SERENA", "puntaje" => 15, "intento" => 5] ;
+        $coleccionPartidas [5] = ["palabraWordix" => "VERDE", "usuario" => "CESAR", "puntaje" => 17, "intento" => 2] ;
+        $coleccionPartidas [6] = ["palabraWordix" => "HUEVO", "usuario" => "FRANCISCO", "puntaje" => 15, "intento" => 3] ;
+        $coleccionPartidas [7] = ["palabraWordix" => "NAVES", "usuario" => "CLAUDIA", "puntaje" => 18, "intento" => 2] ;
+        $coleccionPartidas [8] = ["palabraWordix" => "KANJI", "usuario" => "MAJO", "puntaje" => 0, "intento" => 6] ;
+        $coleccionPartidas [9] = ["palabraWordix" => "PIANO", "usuario" => "CRISTIAN", "puntaje" => 15, "intento" => 4] ;
+        $coleccionPartidas [10] = ["palabraWordix" => "VERDE", "usuario" => "KARINA", "puntaje" => 16, "intento" => 3] ;
+        $coleccionPartidas [11] = ["palabraWordix" => "MELON", "usuario" => "LUCIA", "puntaje" => 14, "intento" => 4] ;
+        $coleccionPartidas [12] = ["palabraWordix" => "BICHO", "usuario" => "LUCIA", "puntaje" => 15, "intento" => 2] ;
+        $coleccionPartidas [13] = ["palabraWordix" => "ILUSO", "usuario" => "SERENA", "puntaje" => 16, "intento" => 2] ;
+        $coleccionPartidas [14] = ["palabraWordix" => "KANJI", "usuario" => "CESAR", "puntaje" => 17, "intento" => 1] ;
+        $coleccionPartidas [15] = ["palabraWordix" => "AREPA", "usuario" => "CESAR", "puntaje" => 14, "intento" => 5] ;
 
         // array_push($coleccionPartidas) ;
 
@@ -149,7 +149,6 @@ include_once("wordix.php");
         return $indice ; 
     }
    
-
     // MODULO 9 
     /** 
     * @param array $coleccionPartidas
@@ -202,6 +201,22 @@ include_once("wordix.php");
                 }
             } 
         }
+        if($partidas == 0) {
+            echo "Este jugador no tiene estadisticas para mostrar" ; 
+            $resumenJugador = [
+                "usuario" => $nombreUsuario ,
+                "partidas" => $partidas ,
+                "puntaje" => $puntaje , 
+                "victorias" => $victorias , 
+                "porcentajeVictorias" => $porcentajeVictorias , 
+                "intento1" => $intento1 ,                         
+                "intento2" => $intento2 ,
+                "intento3" => $intento3 , 
+                "intento4" => $intento4 , 
+                "intento5" => $intento5 , 
+                "intento6" => $intento6 , 
+            ] ;
+        } else {
         $porcentajeVictorias = (($victorias * 100) / $partidas) ; 
         $resumenJugador = [
             "usuario" => $nombreUsuario ,
@@ -209,20 +224,17 @@ include_once("wordix.php");
             "puntaje" => $puntaje , 
             "victorias" => $victorias , 
             "porcentajeVictorias" => $porcentajeVictorias , 
-            "intento1" => $intento1 ,                          // donde poner el adivinadas??? 
+            "intento1" => $intento1 ,                        
             "intento2" => $intento2 ,
             "intento3" => $intento3 , 
             "intento4" => $intento4 , 
             "intento5" => $intento5 , 
             "intento6" => $intento6 , 
         ] ; 
-
-        if($partidas == 0) {
-            echo "Este usuario no tiene estadisticas para mostrar" ;        
-            // consultar por la validacion o mandar estadisticas en 0 ? 
-        }
+        } 
         return $resumenJugador ; 
     }
+    
 
     // NODULO 10 
     /**
@@ -230,14 +242,19 @@ include_once("wordix.php");
      * @return string $nombreJugador
      */
     function solicitarJugador() {           // preguntar mayus o minus
-    // $nombreJugador
+        // $nombreJugador
+    
+            echo "Ingrese su nombre: " ;
+            $nombreJugador = trim(fgets(STDIN));
+            $nombreJugador = strtolower($nombreJugador);
 
-        echo "Ingrese su nombre: " ;
-        $nombreJugador = trim(fgets(STDIN));
-        $nombreJugador = strtolower($nombreJugador);
-
-        return $nombreJugador;
+            while($nombreJugador[0] <> ctype_alpha($nombreJugador[0])) {
+                echo "Ingrese un nombre valido: " ; 
+                $nombreJugador = trim(fgets(STDIN)) ; 
+            }
+            return $nombreJugador;
     }
+
 
 /* ... COMPLETAR ... */
 
@@ -302,21 +319,24 @@ do {
             break; 
         case 5:           // LISTO funciona perfecto
             $usuario = solicitarJugador() ; 
-            $resumenUser = mostrarResumen($coleccionPartidas, $usuario) ;
-
-            echo "Jugador: $usuario" . "\n" ; 
-            echo "Partidas: " . $resumenUser["partidas"] . "\n" ; 
-            echo "Puntaje Total: " . $resumenUser["puntaje"] . "\n" ; 
-            echo "Victorias: " . $resumenUser["victorias"] . "\n" ; 
-            echo "Porcentaje Victorias: " . $resumenUser["porcentajeVictorias"] . "\n" ; 
-            echo "Adivinadas: " . "\n" ; 
-            echo "  Intento 1: " . $resumenUser["intento1"] . "\n" ; 
-            echo "  Intento 2: " . $resumenUser["intento2"] . "\n" ;
-            echo "  Intento 3: " . $resumenUser["intento3"] . "\n" ;    
-            echo "  Intento 4: " . $resumenUser["intento4"] . "\n" ;
-            echo "  Intento 5: " . $resumenUser["intento5"] . "\n" ;
-            echo "  Intento 6: " . $resumenUser["intento6"] . "\n" ; 
-            break; 
+                $resumenUser = mostrarResumen($coleccionPartidas, $usuario) ;
+                echo "\n" . "\n" ;
+                echo "********************************************\n";
+                echo "Jugador: $usuario" . "\n" ; 
+                echo "Partidas: " . $resumenUser["partidas"] . "\n" ; 
+                echo "Puntaje Total: " . $resumenUser["puntaje"] . "\n" ; 
+                echo "Victorias: " . $resumenUser["victorias"] . "\n" ; 
+                echo "Porcentaje Victorias: " . $resumenUser["porcentajeVictorias"] . "\n" ; 
+                echo "Adivinadas: " . "\n" ; 
+                echo "  Intento 1: " . $resumenUser["intento1"] . "\n" ; 
+                echo "  Intento 2: " . $resumenUser["intento2"] . "\n" ;
+                echo "  Intento 3: " . $resumenUser["intento3"] . "\n" ;    
+                echo "  Intento 4: " . $resumenUser["intento4"] . "\n" ;
+                echo "  Intento 5: " . $resumenUser["intento5"] . "\n" ;
+                echo "  Intento 6: " . $resumenUser["intento6"] . "\n" ; 
+                echo "********************************************\n";
+                echo "\n" . "\n" ; 
+                break; 
         case 6: 
 
             break; 
