@@ -26,23 +26,24 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
-// COMPLETADO
-/** 
- * Verifica si el caracter ingresado es un numero entero y que este dentro del rango definido
- * @param int $min
- * @param int $max
- * @return int
- */
-function solicitarNumeroEntre($min, $max)             // esto para cartel de verificacion ej: Debe ingresar un numero entre x rango
-{
-    //int $numero
-    $numero = trim(fgets(STDIN));
-    while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
+    /** 
+     * Verifica si el caracter ingresado es un numero entero y que este dentro del rango definido
+     * @param int $min
+     * @param int $max
+     * @return int
+     */
+    function solicitarNumeroEntre($min, $max) {
+        //int $numero
+        echo "Ingrese un numero: " ; 
+        $numero = trim(fgets(STDIN)) ;
+        $numero = (int)$numero ;  
+
+        while (($numero == false) || !($numero >= $min && $numero <= $max)) {       
         echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
-        $numero = trim(fgets(STDIN));
+        $numero = trim(fgets(STDIN)) ;
+        }
+        return $numero ;
     }
-    return $numero;
-}
 
 /**
  * Escrbir un texto en color ROJO
@@ -178,10 +179,10 @@ function iniciarTeclado()
     $teclado = [
         "A" => ESTADO_LETRA_DISPONIBLE, "B" => ESTADO_LETRA_DISPONIBLE, "C" => ESTADO_LETRA_DISPONIBLE, "D" => ESTADO_LETRA_DISPONIBLE, "E" => ESTADO_LETRA_DISPONIBLE,
         "F" => ESTADO_LETRA_DISPONIBLE, "G" => ESTADO_LETRA_DISPONIBLE, "H" => ESTADO_LETRA_DISPONIBLE, "I" => ESTADO_LETRA_DISPONIBLE, "J" => ESTADO_LETRA_DISPONIBLE,
-        "K" => ESTADO_LETRA_DISPONIBLE, "L" => ESTADO_LETRA_DISPONIBLE, "M" => ESTADO_LETRA_DISPONIBLE, "N" => ESTADO_LETRA_DISPONIBLE, "Ñ" => ESTADO_LETRA_DISPONIBLE,
-        "O" => ESTADO_LETRA_DISPONIBLE, "P" => ESTADO_LETRA_DISPONIBLE, "Q" => ESTADO_LETRA_DISPONIBLE, "R" => ESTADO_LETRA_DISPONIBLE, "S" => ESTADO_LETRA_DISPONIBLE,
-        "T" => ESTADO_LETRA_DISPONIBLE, "U" => ESTADO_LETRA_DISPONIBLE, "V" => ESTADO_LETRA_DISPONIBLE, "W" => ESTADO_LETRA_DISPONIBLE, "X" => ESTADO_LETRA_DISPONIBLE,
-        "Y" => ESTADO_LETRA_DISPONIBLE, "Z" => ESTADO_LETRA_DISPONIBLE
+        "K" => ESTADO_LETRA_DISPONIBLE, "L" => ESTADO_LETRA_DISPONIBLE, "M" => ESTADO_LETRA_DISPONIBLE, "N" => ESTADO_LETRA_DISPONIBLE, "O" => ESTADO_LETRA_DISPONIBLE, 
+        "P" => ESTADO_LETRA_DISPONIBLE, "Q" => ESTADO_LETRA_DISPONIBLE, "R" => ESTADO_LETRA_DISPONIBLE, "S" => ESTADO_LETRA_DISPONIBLE,"T" => ESTADO_LETRA_DISPONIBLE, 
+        "U" => ESTADO_LETRA_DISPONIBLE, "V" => ESTADO_LETRA_DISPONIBLE, "W" => ESTADO_LETRA_DISPONIBLE, "X" => ESTADO_LETRA_DISPONIBLE,"Y" => ESTADO_LETRA_DISPONIBLE, 
+        "Z" => ESTADO_LETRA_DISPONIBLE
     ];
     return $teclado;
 }
