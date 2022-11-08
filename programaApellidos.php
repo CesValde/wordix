@@ -269,9 +269,9 @@ include_once("wordix.php");
             return $nombreJugador;
     }
 
-    // MODULO 11
+    // MODULO 11 COMPLEMENTO
     /** 
-     * 
+     * son los parametros dados para realizar el uasort en la siguiente funcion
      */
     function cmp($a,$b){
         if(strcmp($a["usuario"], $b["usuario"]) == 0){
@@ -282,11 +282,32 @@ include_once("wordix.php");
     return $orden; 
     }
 
-    // ESTO ?
+    // MODULO 11 
+    /**
+     * ordena las partidas segun el orden alfabetico de los jugadores y sus partidas jugadas
+     */
     function orden(){
     $coleccion = cargarPartidas();
     uasort($coleccion,'cmp');
     print_r($coleccion);
+    }
+
+    // FUNCION EXTRA
+    /**
+     * a partir del nombre del usuario, el numero de palabra seleccionado y los arrays de 
+     * palabras y partidas, este modulo evalua si la palabra ya fue jugada por ese jugador y
+     * retorna -1 en ese caso, sino retorna el numero de palabra sin alterar
+     */
+    function palabraUsada($usuario,$palabraWordix,$coleccionPartidas,$coleccionPalabras){
+        $i = 0 ;
+        $palabraElegida = $coleccionPalabras[$palabraWordix] ; 
+        while($i<count($coleccionPartidas) && $usuario==$coleccionPartidas[$i]["usuario"]){
+            if($palabraElegida==$coleccionPartidas[$i]["palabraWordix"]){
+                $palabraWordix = -1 ;
+            }
+            $i++ ;
+        }
+        return $palabraWordix ;
     }
 
 /* ... COMPLETAR ... */
@@ -324,9 +345,7 @@ do {
     switch ($opcion) {
         case 1: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
-
-            echo "Ingrese el numero de palabra que desee jugar: " ; 
-            $palabraWordix = trim(fgets(STDIN)) ;
+            $palabraWordix = solicitarNumeroEntre($mini, count($coleccionPalabras)) ;
             // llamdo funcion 10
             //$partida = jugarWordix() ; // completar
             // $coleccionPartidas = actualizarColecPartidas($coleccionPartidas,$partida)
