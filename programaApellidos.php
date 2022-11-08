@@ -100,7 +100,9 @@ include_once("wordix.php");
     function datosDePartida($nroPartida) {    
         // array $coleccionPartidasX
             $coleccionPartidasX = cargarPartidas();
-            
+        if($nroPartida==0){
+            $nroPartida=$nroPartida + 1 ;
+        }
         echo "********************************************\n";
         echo "Partida WORDIX " .$nroPartida . ": palabra " . $coleccionPartidasX[$nroPartida - 1]["palabraWordix"]. "\n"; 
         echo "Jugador: " . $coleccionPartidasX[$nroPartida - 1]["usuario"]. "\n";
@@ -345,20 +347,50 @@ do {
     switch ($opcion) {
         case 1: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
+            $usuario = solicitarJugador() ;
             $palabraWordix = solicitarNumeroEntre($mini, count($coleccionPalabras)) ;
             // llamdo funcion 10
-            //$partida = jugarWordix() ; // completar
-            // $coleccionPartidas = actualizarColecPartidas($coleccionPartidas,$partida)
+            $palabraWordix= palabraUsada($usuario,$palabraWordix,$coleccionPartidas,$coleccionPalabras) ;
+            while ($palabraWordix==-1){
+                echo "Debe elegir otro numero de palabra" ;
+                $palabraWordix = solicitarNumeroEntre($mini, count($coleccionPalabras)) ;
+                $palabraWordix= palabraUsada($usuario,$palabraWordix,$coleccionPartidas,$coleccionPalabras) ;
+            }
 
+            //$partida = jugarWordix() ; // completar
+            $partida=jugarWordix($palabraWordix,$Usuario) ;
+            // $coleccionPartidas = actualizarColecPartidas($coleccionPartidas,$partida)
+            $coleccionPartidas =actualizarColecPartidas($coleccionPartidas,$partida) ;
             break;
         case 2: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
+           
+            // llamdo funcion 10 para solicitar nombre del jugador
+            $usuario = solicitarJugador() ;
 
+            //El programa debe elegir una palabra aleatoria dentro de las disponibles para jugar
+            $coleccionPalabras=cargarColeccionPalabras() ;
+            $palabraAleatoria = array_rand($coleccionPalabras,1) ;
+            //El prograba debe verificar que la palabra seleccionada no haya sido jugada por el jugador anteriormente
+            $palabraWordix= palabraUsada($usuario,$palabraAleatoria,$coleccionPartidas,$coleccionPalabras) ;
+            while ($palabraWordix==-1){
+                $palabraAleatoria = array_rand($coleccionPalabras,1) ;
+                $palabraWordix= palabraUsada($usuario,$palabraAleatoria,$coleccionPartidas,$coleccionPalabras) ;
+            }
+            //jugar wordix
+            $partida=jugarWordix($palabraWordix,$Usuario) ;
+
+            // Hay que almacenar la partida
+            $coleccionPartidas =actualizarColecPartidas($coleccionPartidas,$partida) ;
             break;
-        case 3:         // LISTO funciona perfecto
+       
+       
+       
+            case 3:         // LISTO funciona perfecto
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
 
             $numeroPartida = solicitarNumeroEntre($mini, count($coleccionPartidas)) ; 
+        
             echo "\n" . "\n" ; 
             datosDePartida($numeroPartida) ; 
             echo "\n" . "\n" ; 
