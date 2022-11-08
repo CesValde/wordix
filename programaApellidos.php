@@ -353,13 +353,13 @@ do {
             // llamdo funcion 10
             $palabraWordix= palabraUsada($usuario,$palabraWordix,$coleccionPartidas,$coleccionPalabras) ;
             while ($palabraWordix==-1){
-                echo "Debe elegir otro numero de palabra" ;
+                echo "Debe elegir otro numero de palabra \n" ;
                 $palabraWordix = solicitarNumeroEntre($mini, count($coleccionPalabras)) ;
                 $palabraWordix= palabraUsada($usuario,$palabraWordix,$coleccionPartidas,$coleccionPalabras) ;
             }
 
             //$partida = jugarWordix() ; // completar
-            $partida=jugarWordix($palabraWordix,$Usuario) ;
+            $partida=jugarWordix($palabraWordix,$usuario) ;
             // $coleccionPartidas = actualizarColecPartidas($coleccionPartidas,$partida)
             $coleccionPartidas =actualizarColecPartidas($coleccionPartidas,$partida) ;
             break;
@@ -379,7 +379,7 @@ do {
                 $palabraWordix= palabraUsada($usuario,$palabraAleatoria,$coleccionPartidas,$coleccionPalabras) ;
             }
             //jugar wordix
-            $partida=jugarWordix($palabraWordix,$Usuario) ;
+            $partida=jugarWordix($palabraWordix,$usuario) ;
 
             // Hay que almacenar la partida
             $coleccionPartidas =actualizarColecPartidas($coleccionPartidas,$partida) ;
@@ -430,7 +430,7 @@ do {
                 echo "\n" . "\n" ; 
                 break; 
         case 6: 
-
+            orden() ;
             break; 
         
         case 7:
