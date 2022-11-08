@@ -327,9 +327,8 @@ include_once("wordix.php");
 
 
     $coleccionPartidas = cargarPartidas() ; 
-    $mini = 0 ; 
-    $coleccionPalabras = cargarColeccionPalabras(); //contiene lista original
-    $palabraNueva = leerPalabra5Letras(); 
+    $coleccionPalabras = cargarColeccionPalabras() ; 
+    $mini = 0 ;
     
 
 
@@ -435,7 +434,15 @@ do {
             break; 
         
         case 7:
-            $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabraNueva) ;
+            $cumple = false ; 
+            do{
+                $palabraWordix = leerPalabra5Letras() ;
+                $cumple = esPalabra($palabraWordix) ;
+            } while($cumple == false) ;
+            if($cumple) {
+                $coleccionPalabras = agregarPalabra($coleccionPalabras, $palabraWordix) ; 
+            }
+            print_r($coleccionPalabras) ; 
             break;
     }
 } while ($opcion != 8);
