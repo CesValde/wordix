@@ -36,7 +36,7 @@ include_once("wordix.php");
         // usar funcion array_push 
         $coleccionPartidas = [];
 
-        $coleccionPartidas [0] = ["palabraWordix" => "BICHO", "usuario" => "cr7", "puntaje" => 14, "intento" => 3] ;
+        $coleccionPartidas [0] = ["palabraWordix" => "BICHO", "usuario" => "CR7", "puntaje" => 14, "intento" => 3] ;
         $coleccionPartidas [1] = ["palabraWordix" => "GATOS", "usuario" => "LUCIA", "puntaje" => 17, "intento" => 2] ;
         $coleccionPartidas [2] = ["palabraWordix" => "MUJER", "usuario" => "DAVID", "puntaje" => 17, "intento" => 1] ;
         $coleccionPartidas [3] = ["palabraWordix" => "QUESO", "usuario" => "MAJO", "puntaje" => 15, "intento" => 4] ;
@@ -44,7 +44,7 @@ include_once("wordix.php");
         $coleccionPartidas [5] = ["palabraWordix" => "VERDE", "usuario" => "CESAR", "puntaje" => 17, "intento" => 2] ;
         $coleccionPartidas [6] = ["palabraWordix" => "HUEVO", "usuario" => "FRANCISCO", "puntaje" => 15, "intento" => 3] ;
         $coleccionPartidas [7] = ["palabraWordix" => "NAVES", "usuario" => "CLAUDIA", "puntaje" => 18, "intento" => 2] ;
-        $coleccionPartidas [8] = ["palabraWordix" => "KANJI", "usuario" => "majo", "puntaje" => 0, "intento" => 6] ;
+        $coleccionPartidas [8] = ["palabraWordix" => "KANJI", "usuario" => "MAJO", "puntaje" => 0, "intento" => 6] ;
         $coleccionPartidas [9] = ["palabraWordix" => "PIANO", "usuario" => "CRISTIAN", "puntaje" => 15, "intento" => 4] ;
         $coleccionPartidas [10] = ["palabraWordix" => "VERDE", "usuario" => "KARINA", "puntaje" => 16, "intento" => 3] ;
         $coleccionPartidas [11] = ["palabraWordix" => "MELON", "usuario" => "LUCIA", "puntaje" => 14, "intento" => 4] ;
@@ -52,7 +52,7 @@ include_once("wordix.php");
         $coleccionPartidas [13] = ["palabraWordix" => "ILUSO", "usuario" => "SERENA", "puntaje" => 16, "intento" => 2] ;
         $coleccionPartidas [14] = ["palabraWordix" => "KANJI", "usuario" => "CESAR", "puntaje" => 17, "intento" => 1] ;
         $coleccionPartidas [15] = ["palabraWordix" => "AREPA", "usuario" => "CESAR", "puntaje" => 14, "intento" => 5] ;
-        $coleccionPartidas [16] = ["palabraWordix" => "AREPA", "usuario" => "marta", "puntaje" => 0, "intento" => 6] ;
+        $coleccionPartidas [16] = ["palabraWordix" => "AREPA", "usuario" => "MARTA", "puntaje" => 0, "intento" => 6] ;
         // array_push($coleccionPartidas) ;
 
             return $coleccionPartidas;
@@ -125,9 +125,9 @@ include_once("wordix.php");
      * @param string $palabraNueva
      * @return array
      */
-    function agregarPalabra($coleccionPalabrasX,$palabraNueva){
-        array_push($coleccionPalabrasX,$palabraNueva);
-        return $coleccionPalabrasX;
+    function agregarPalabra($coleccionPalabras,$palabraNueva){
+        array_push($coleccionPalabras,$palabraNueva);
+        return $coleccionPalabras;
     }
 
     // MODULO 8
@@ -262,7 +262,7 @@ include_once("wordix.php");
     
             echo "Ingrese su nombre: " ;
             $nombreJugador = trim(fgets(STDIN));
-            $nombreJugador = strtolower($nombreJugador);        // usamos la de mayus 
+            $nombreJugador = strtoupper($nombreJugador);        // usamos la de mayus 
 
             while($nombreJugador[0] <> ctype_alpha($nombreJugador[0])) {
                 echo "Ingrese un nombre valido: " ; 
@@ -328,7 +328,9 @@ include_once("wordix.php");
 
     $coleccionPartidas = cargarPartidas() ; 
     $mini = 0 ; 
-
+    $coleccionPalabras = cargarColeccionPalabras(); //contiene lista original
+    $palabraNueva = leerPalabra5Letras(); 
+    
 
 
 //Proceso:
@@ -433,24 +435,11 @@ do {
             break; 
         
         case 7:
-
+            $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabraNueva) ;
             break;
     }
 } while ($opcion != 8);
 
 
-    /* 
-    $coleccionPalabrasX = cargarColeccionPalabras(); //contiene lista original
-    $palabraNueva = leerPalabra5Letras(); 
-    $coleccionPalabrasX = agregarPalabra($coleccionPalabrasX,$palabraNueva)
-    // sobreescribe la lista original con la nueva lista actualizada
-    // esta variable va a usarse para elegir jugar una palabra (menu opcion 1 y 2)
-    // con la lista actualizada, no la original
-    */
 
-
-
-
-
-
-    // if($coleccionPartidas [$partida]["partida"] == )
+  // if($coleccionPartidas [$partida]["partida"] == )
