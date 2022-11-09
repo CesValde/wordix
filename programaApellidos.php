@@ -357,9 +357,9 @@ do {
                 $palabraWordix = solicitarNumeroEntre($mini, count($coleccionPalabras)) ;
                 $palabraWordix= palabraUsada($usuario,$palabraWordix,$coleccionPartidas,$coleccionPalabras) ;
             }
-
+            $palabraJugar = $coleccionPalabras[$palabraWordix] ;
             //$partida = jugarWordix() ; // completar
-            $partida=jugarWordix($palabraWordix,$usuario) ;
+            $partida=jugarWordix($palabraJugar,$usuario) ;
             // $coleccionPartidas = actualizarColecPartidas($coleccionPartidas,$partida)
             $coleccionPartidas =actualizarColecPartidas($coleccionPartidas,$partida) ;
             break;
@@ -378,8 +378,9 @@ do {
                 $palabraAleatoria = array_rand($coleccionPalabras,1) ;
                 $palabraWordix= palabraUsada($usuario,$palabraAleatoria,$coleccionPartidas,$coleccionPalabras) ;
             }
+            $palabraJugar = $coleccionPalabras[$palabraWordix] ;
             //jugar wordix
-            $partida=jugarWordix($palabraWordix,$usuario) ;
+            $partida=jugarWordix($palabraJugar,$usuario) ;
 
             // Hay que almacenar la partida
             $coleccionPartidas =actualizarColecPartidas($coleccionPartidas,$partida) ;
