@@ -123,7 +123,6 @@
         }
     }
 
-    //COMPLETADO
     /**
      * Imprime un mensaje de bienvenida con el nombre del usuario
      * @param string $usuario
@@ -137,7 +136,6 @@
         echo "***************************************************\n";
     }
 
-    //COMPLETADO
     /**
      * Verifica que los caracteres ingresados sean letras y si lo son retorna true 
      * @param string $cadena
@@ -156,7 +154,6 @@
         return $esLetra;
     }
 
-    //COMPLETADO
     /**
      * Verifica si la palabra es de 5 letras, sino le imprime que ingrese una palabra de 5 letras
      * @return string 
@@ -169,12 +166,11 @@
         $palabra  = strtoupper($palabra);
 
         while ((strlen($palabra) != 5) || !esPalabra($palabra)) {
-            echo "Debe ingresar una palabra de 5 letras:";
+            echo "Debe ingresar una palabra de 5 letras: " ;
             $palabra = strtoupper(trim(fgets(STDIN)));
         }
         return $palabra;
     }
-
 
     /**
      * Inicia una estructura de datos Teclado. La estructura es de tipo: ¿Indexado, asociativo o Multidimensional?
@@ -332,13 +328,11 @@
         while ($i < $cantLetras && $estructuraPalabraIntento[$i]["estado"] == ESTADO_LETRA_ENCONTRADA) {
             $i++;
         }
-
         if ($i == $cantLetras) {
             $ganado = true;
         } else {
             $ganado = false;
         }
-
         return $ganado;
     }
 
@@ -382,7 +376,7 @@
             case 5: $intento == 5 ; 
                 $puntaje = $puntaje + 2 ; 
                 break ; 
-            case 6: $intento == 6 ;             // dejar asi o poner default ?    
+            case 6: $intento == 6 ;     
                 $puntaje = $puntaje + 1 ; 
         }
         return $puntaje ;
@@ -417,15 +411,14 @@
             $nroIntento++;
         } while ($nroIntento <= CANT_INTENTOS && !$ganoElIntento);
 
-
         if ($ganoElIntento) {
             $nroIntento--;
-            $puntaje = obtenerPuntajeWordix($palabraWordix, $nroIntento);       // agregue los parametros
+            $puntaje = obtenerPuntajeWordix($palabraWordix, $nroIntento);   
             echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos! \n";
         } else {
             $nroIntento = 0; //reset intento
             $puntaje = 0;
-            echo "Seguí Jugando Wordix, la próxima será! ";
+            echo "Seguí Jugando Wordix, la próxima será! " . "\n" ;
         }
 
         $partida = [
