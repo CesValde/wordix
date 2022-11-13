@@ -37,15 +37,17 @@
        
         echo "Ingrese un numero: " ; 
         $numero = trim(fgets(STDIN)) ;
-
         while(!ctype_digit($numero)) {
             echo "Ingrese un numero valido: " ; 
             $numero = trim(fgets(STDIN)) ;
-        }
-       
-        while (!is_int($numero + 0) || !($numero >= $min && $numero <= $max)) {       
+        } 
+        while (!is_int($numero+0) || !($numero >= $min && $numero <= $max)) {       
         echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
         $numero = trim(fgets(STDIN)) ;
+            while(!ctype_digit($numero)) {
+                echo "Ingrese un numero valido: " ; 
+                $numero = trim(fgets(STDIN)) ;
+            }
         }
         return $numero ;
     } 
@@ -419,7 +421,7 @@
         if ($ganoElIntento) {
             $nroIntento--;
             $puntaje = obtenerPuntajeWordix($palabraWordix, $nroIntento);       // agregue los parametros
-            echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
+            echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos! \n";
         } else {
             $nroIntento = 0; //reset intento
             $puntaje = 0;
@@ -428,9 +430,9 @@
 
         $partida = [
             "palabraWordix" => $palabraWordix,
-            "jugador" => $nombreUsuario,
-            "intentos" => $nroIntento,
-            "puntaje" => $puntaje
+            "usuario" => $nombreUsuario,
+            "puntaje" => $puntaje,
+            "intento" => $nroIntento,
         ];
 
         return $partida;
