@@ -164,11 +164,12 @@ include_once("wordix.php");
     */ 
     function mostrarResumen($coleccionPartidas, $nombreUsuario) {      
         // array $resumenJugador 
-        // int $partidas, $puntaje, $victorias, $intento, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6
+        // int $partidas, $puntaje, $puntajeTotal, $victorias, $intento, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6
         // float $porcentajeVictorias
     
         $partidas = 0 ; 
         $puntaje = 0 ; 
+        $puntajeTotal = 0 ; 
         $victorias = 0 ; 
         $porcentajeVictorias = 0 ; 
         $intento1 = 0 ; 
@@ -181,7 +182,8 @@ include_once("wordix.php");
         for($i=0 ; $i<count($coleccionPartidas) ; $i++) {
             if($coleccionPartidas[$i]["usuario"] == $nombreUsuario) {
                 $partidas++ ; 
-                $puntaje = $puntaje + $coleccionPartidas[$i]["puntaje"] ; 
+                $puntaje = $coleccionPartidas[$i]["puntaje"] ; 
+                $puntajeTotal = $puntaje + $puntajeTotal ;
                     if($puntaje > 0) {
                         $victorias++ ; 
                     }
