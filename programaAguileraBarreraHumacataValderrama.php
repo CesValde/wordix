@@ -158,6 +158,7 @@ include_once("wordix.php");
     }         
 
     /** 
+    * Guarda en un array los datos del jugador de sus partidas jugadas
     * @param array $coleccionPartidas
     * @param string $nombreUsuario 
     * @return array $resumenJugador 
@@ -252,13 +253,13 @@ include_once("wordix.php");
         // string $nombreJugador
     
         echo "Ingrese su nombre: " ;
-        $nombreJugador = trim(fgets(STDIN));
-        $nombreJugador = strtoupper($nombreJugador);       
+        $nombreJugador = trim(fgets(STDIN));      
 
-        while($nombreJugador[0] <> ctype_alpha($nombreJugador[0])) {
+        while($nombreJugador[0] <> ctype_alpha($nombreJugador[0]) || $nombreJugador[0] == 0 ){     
             echo "Ingrese un nombre valido: " ; 
-            $nombreJugador = trim(fgets(STDIN)) ; 
+            $nombreJugador = trim(fgets(STDIN)) ;   
         }
+        $nombreJugador = strtoupper($nombreJugador);
         return $nombreJugador;
     }
 
