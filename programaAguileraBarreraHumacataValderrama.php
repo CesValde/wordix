@@ -37,7 +37,7 @@ include_once("wordix.php");
      */
     function cargarPartidas(){
         // Array $coleccionPartidas
-        $coleccionPartidas = [];
+      /*  $coleccionPartidas = [];
 
         $coleccionPartidas [0] = ["palabraWordix" => "BICHO", "usuario" => "CR7", "puntaje" => 14, "intento" => 3] ;
         $coleccionPartidas [1] = ["palabraWordix" => "GATOS", "usuario" => "LUCIA", "puntaje" => 17, "intento" => 2] ;
@@ -58,6 +58,23 @@ include_once("wordix.php");
         $coleccionPartidas [16] = ["palabraWordix" => "AREPA", "usuario" => "MARTA", "puntaje" => 0, "intento" => 6] ;
 
         return $coleccionPartidas ;
+        */
+        $coleccion = [];
+            $pa1 = ["palabraWordix" => "SUECO", "usuario" => "kleiton", "intento" => 0, "puntaje" => 0];
+            $pa2 = ["palabraWordix" => "YUYOS", "usuario" => "briba", "intento" => 0, "puntaje" => 0];
+            $pa3 = ["palabraWordix" => "HUEVO", "usuario" => "zrack", "intento" => 3, "puntaje" => 9];
+            $pa4 = ["palabraWordix" => "TINTO", "usuario" => "cabrito", "intento" => 4, "puntaje" => 8];
+            $pa5 = ["palabraWordix" => "RASGO", "usuario" => "briba", "intento" => 0, "puntaje" => 0];
+            $pa6 = ["palabraWordix" => "VERDE", "usuario" => "cabrito", "intento" => 5, "puntaje" => 7];
+            $pa7 = ["palabraWordix" => "CASAS", "usuario" => "kleiton", "intento" => 5, "puntaje" => 7];
+            $pa8 = ["palabraWordix" => "GOTAS", "usuario" => "kleiton", "intento" => 0, "puntaje" => 0];
+            $pa9 = ["palabraWordix" => "ZORRO", "usuario" => "zrack", "intento" => 4, "puntaje" => 8];
+            $pa10 = ["palabraWordix" => "GOTAS", "usuario" => "cabrito", "intento" => 0, "puntaje" => 0];
+            $pa11 = ["palabraWordix" => "FUEGO", "usuario" => "cabrito", "intento" => 2, "puntaje" => 10];
+            $pa12 = ["palabraWordix" => "TINTO", "usuario" => "briba", "intento" => 0, "puntaje" => 0];
+
+            array_push($coleccion, $pa1, $pa2, $pa3, $pa4, $pa5, $pa6, $pa7, $pa8, $pa9, $pa10, $pa11, $pa12);
+            return $coleccion;
     }
 
     /**
@@ -137,16 +154,21 @@ include_once("wordix.php");
         $indice = -1 ;
         $i = 0 ; 
         $existe = false ; 
-
+        
             while($i < count($coleccionPartidas) && $indice == -1) {
+                
                 if($coleccionPartidas[$i]["usuario"] == $usuario) {
+                    
                     if($coleccionPartidas [$i]["puntaje"] > 0) {
+                        
+                
                         $indice = $i ;
                         $existe = true ; 
                     }elseif($coleccionPartidas [$i]["puntaje"] == 0){
+                        
                         $indice = -1 ;
                         $existe = true ; 
-                        $i = count($coleccionPartidas) ;
+                        //$i = count($coleccionPartidas) ;
                     }
                 }
                 $i++ ;
@@ -259,7 +281,7 @@ include_once("wordix.php");
             echo "Ingrese un nombre valido: " ; 
             $nombreJugador = trim(fgets(STDIN)) ;   
         }
-        $nombreJugador = strtoupper($nombreJugador);
+        $nombreJugador = strtolower($nombreJugador);
         return $nombreJugador;
     }
 
@@ -351,7 +373,7 @@ do {
         case 2: 
             $usuario = solicitarJugador() ;
             // El programa debe elegir una palabra aleatoria dentro de las disponibles para jugar
-            $coleccionPalabras = cargarColeccionPalabras() ;
+            //$coleccionPalabras = cargarColeccionPalabras() ;
             $palabraAleatoria = array_rand($coleccionPalabras, 1) ;
             // El programa debe verificar que la palabra seleccionada no haya sido jugada por el jugador anteriormente
             $palabraWordix = palabraUsada($usuario, $palabraAleatoria, $coleccionPartidas, $coleccionPalabras) ;
