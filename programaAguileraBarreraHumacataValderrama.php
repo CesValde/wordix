@@ -369,7 +369,6 @@ do {
         case 2: 
             $usuario = solicitarJugador() ;
             // El programa debe elegir una palabra aleatoria dentro de las disponibles para jugar
-            //$coleccionPalabras = cargarColeccionPalabras() ;
             $palabraAleatoria = array_rand($coleccionPalabras, 1) ;
             // El programa debe verificar que la palabra seleccionada no haya sido jugada por el jugador anteriormente
             $palabraWordix = palabraUsada($usuario, $palabraAleatoria, $coleccionPartidas, $coleccionPalabras) ;
